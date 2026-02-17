@@ -2,6 +2,8 @@
 
 My configuration files for PHP Codesniffer (PHPCS), which are designed to play nice with Mago for formatting.
 
+Clone this repository to `~/.config/phpcs`
+
 Requires PHPCS to be installed globally using Composer:
 
 ```bash
