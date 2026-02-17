@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<ruleset name="Global linting (formatting via mago)">
+
+  <!-- structural baseline only -->
+  <rule ref="PSR12">
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+    <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
+    <exclude name="Squiz.WhiteSpace.ScopeClosingBrace"/>
+    <exclude name="PSR2.Methods.FunctionClosingBrace"/>
+  </rule>
+
+  <!-- line length sanity (matches VSCode setting -->
+  <rule ref='Generic.Files.LineLength'>
+    <properties>
+      <property name='lineLimit' value='145'/>
+      <property name='absoluteLineLimit' value='0'/>
+    </properties>
+  </rule>
+
+
+  <!-- ========================= -->
+  <!-- Squiz: real PHP foot-guns -->
+  <!-- ========================= -->
+
+  <!-- ban and/or/xor -->
+  <rule ref="Squiz.Operators.ValidLogicalOperators"/>
+
+  <!-- enforce === / !== for value comparisons -->
+  <rule ref="Squiz.Operators.ComparisonOperatorUsage">
+    <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+    <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitFalse"/>
+    <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+  </rule>
+
+  <!-- prevent if ($x = foo()) -->
+  <rule ref="Squiz.PHP.DisallowComparisonAssignment">
+    <exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison"/>
+  </rule>
+
+  <!-- prevent $a = $b = foo() -->
+  <rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
+
+  <!-- prevent count()/sizeof() in loops -->
+  <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops"/>
+
+  <!-- naming: camelCase variables -->
+  <rule ref="Squiz.NamingConventions.ValidVariableName">
+    <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    <exclude name="Squiz.NamingConventions.ValidVariableName.ProtectedNoUnderscore"/>
+  </rule>
+
+  <!-- hard no -->
+  <rule ref="Squiz.PHP.Eval"/>
+
+  <!-- ============================= -->
+  <!-- Slevomat: modern PHP 8+ rules -->
+  <!-- ============================= -->
+
+  <!-- namespaces -->
+  <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/>
+  <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
+
+  <!-- type safety -->
+  <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+    <properties>
+      <property name="spacesCountAroundEqualsSign" value="0"/>
+    </properties>
+  </rule>
+  <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
+  <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
+  <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
+  <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
+
+  <!-- dead / useless code -->
+  <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
+  <rule ref="SlevomatCodingStandard.Functions.UnusedParameter"/>
+  <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
+  <rule ref="SlevomatCodingStandard.ControlStructures.UselessIfConditionWithReturn"/>
+  <rule ref="SlevomatCodingStandard.ControlStructures.UselessTernaryOperator"/>
+
+  <!-- docblock cleanup -->
+  <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment"/>
+  <rule ref="SlevomatCodingStandard.Commenting.UselessInheritDocComment"/>
+
+  <!-- ================= -->
+  <!-- house bans / junk -->
+  <!-- ================= -->
+
+  <rule ref="Generic.PHP.ForbiddenFunctions">
+    <properties>
+      <property name="forbiddenFunctions" type="array">
+        <element key="var_dump" value="remove"/>
+        <element key="print_r" value="remove"/>
+        <element key="die" value="throw or return"/>
+        <element key="exit" value="throw or return"/>
+        <element key="is_null" value="use === null"/>
+      </property>
+    </properties>
+  </rule>
+
+</ruleset>
