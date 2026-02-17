@@ -47,6 +47,8 @@
   <rule ref="Squiz.NamingConventions.ValidVariableName">
     <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
     <exclude name="Squiz.NamingConventions.ValidVariableName.ProtectedNoUnderscore"/>
+    <!-- ORM pain: properties in model classes may have an underscored name -->
+    <exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
   </rule>
 
   <!-- hard no -->
