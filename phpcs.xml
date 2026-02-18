@@ -37,6 +37,12 @@
     <exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison"/>
   </rule>
 
+  <!-- making if($x = Y::get()) style code a warning not an error -->
+  <rule ref="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure">
+    <severity>5</severity>
+    <type>warning</type>
+  </rule>
+
   <!-- prevent $a = $b = foo() -->
   <rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
 
