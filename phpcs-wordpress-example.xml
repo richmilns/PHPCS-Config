@@ -33,10 +33,10 @@
     <!-- PSR-12 drags in PSR-1 camelCase method enforcement -->
 
     <!-- ignore deps/build -->
-    <exclude-pattern>vendor/*</exclude-pattern>
-    <exclude-pattern>node_modules/*</exclude-pattern>
-    <exclude-pattern>dist/*</exclude-pattern>
-    <exclude-pattern>build/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/dist/*</exclude-pattern>
+    <exclude-pattern>*/build/*</exclude-pattern>
 
     <!-- ====================== -->
     <!-- naming: more Wordpress -->
